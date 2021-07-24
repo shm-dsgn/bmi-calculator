@@ -1,7 +1,10 @@
 function myFunction() {
-  var weight = parseInt(document.getElementById('weight').value);
-  var height = parseInt(document.getElementById('height').value);
-  if(height%1===0 && weight%1===0){
+  var weight = parseFloat(document.getElementById('weight').value);
+  var height = parseFloat(document.getElementById('height').value);
+  if(Number.isNaN(weight)||Number.isNaN(height)){
+    document.getElementById("result").innerHTML = "Error. Try Again";
+  }
+  else{
     var value= (weight*10000)/(height*height);
     value = value.toFixed(2);
     if (value<18.5) {
@@ -17,9 +20,5 @@ function myFunction() {
       document.getElementById("result").style.color = "#DD0000"
     }
     document.getElementById("result").innerHTML = "Your BMI : " + value;
-  }
-  
-  else{
-    document.getElementById("result").innerHTML = "Error. Try Again";
   }
 }
